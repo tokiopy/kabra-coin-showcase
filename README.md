@@ -2,9 +2,9 @@
 
 # Kabra Coin
 
-### Landing page para la primera memecoin de Punta Cana, República Dominicana. Construida sobre Solana.
+### Landing page for the first memecoin from Punta Cana, Dominican Republic. Built on Solana.
 
-Precio en vivo · Trading Chart · Exchanges · YouTube dinámico · Chat IA · Tokenomics
+Live Price · Trading Chart · Exchanges · Dynamic YouTube · AI Chat · Tokenomics
 
 [![Live Site](https://img.shields.io/badge/Visit_Live-kabracoin.com-00D4C4?style=for-the-badge&logo=solana&logoColor=white)](https://kabracoin.com/)
 [![Status](https://img.shields.io/badge/Status-Production-22c55e?style=for-the-badge)](https://kabracoin.com/)
@@ -18,41 +18,41 @@ Precio en vivo · Trading Chart · Exchanges · YouTube dinámico · Chat IA · 
 
 ## What is this?
 
-**Kabra Coin ($KABRA)** es la primera memecoin comunitaria de Punta Cana, República Dominicana, desplegada en la blockchain de Solana. Este repositorio es la landing page oficial del proyecto. Una web de una sola página que informa, integra datos en tiempo real y conecta a la comunidad con los exchanges donde opera el token.
+**Kabra Coin ($KABRA)** is the first community memecoin from Punta Cana, Dominican Republic, deployed on the Solana blockchain. This repository is the project's official landing page. A single-page site that informs, integrates real-time data, and connects the community with the exchanges where the token trades.
 
-El sitio no es una vitrina estática. Tiene precios en vivo, un chart de trading embebido, una galería de videos cargada dinámicamente desde YouTube, y un widget de chat con IA construido sobre n8n.
+The site is not a static showcase. It has live prices, an embedded trading chart, a video gallery loaded dynamically from YouTube, and an AI chat widget built on n8n.
 
-> 🌐 **Live:** [kabracoin.com](https://kabracoin.com/) · ⛓️ Solana · 🌴 Punta Cana, RD
+> 🌐 **Live:** [kabracoin.com](https://kabracoin.com/) · ⛓️ Solana · 🌴 Punta Cana, Dominican Republic
 
 ---
 
-## Secciones
+## Sections
 
 ### 📊 Price Ticker
 
-Barra fija en la parte superior con precios en tiempo real de $KABRA, BTC, ETH y SOL. Se actualiza cada 30 segundos sin recargar la página.
+Fixed bar at the top with real-time prices for $KABRA, BTC, ETH, and SOL. Updates every 30 seconds without reloading the page.
 
-- **$KABRA:** precio obtenido de DexScreener API (`/latest/dex/tokens/{contract}`), la fuente correcta para tokens en DEXs de Solana
-- **BTC / ETH / SOL:** CoinGecko API con variación 24h
-- **Animación:** ticker horizontal con CSS `transform` y `requestAnimationFrame`, sin librerías de animación
-- **Indicadores de color:** verde/rojo automático según variación 24h positiva o negativa
+- **$KABRA:** price fetched from DexScreener API (`/latest/dex/tokens/{contract}`), the right source for tokens on Solana DEXs
+- **BTC / ETH / SOL:** CoinGecko API with 24h change
+- **Animation:** horizontal ticker with CSS `transform` and `requestAnimationFrame`, no animation libraries
+- **Color indicators:** automatic green/red based on positive or negative 24h change
 
 ---
 
 ### 📈 Trading Chart
 
-Chart de trading en vivo embebido directamente desde DexScreener. Par $KABRA/SOL en Solana mainnet.
+Live trading chart embedded directly from DexScreener. $KABRA/SOL pair on Solana mainnet.
 
 ![Trading Chart](screenshots/02-chart.jpg)
 
-- **Auto-recovery:** se recarga automáticamente al volver a la pestaña (Page Visibility API) y cada 5 minutos para mantener la conexión WebSocket activa
-- **Botón de recarga manual** para forzar refresh sin recargar la página
+- **Auto-recovery:** automatically reloads when returning to the tab (Page Visibility API) and every 5 minutes to keep the WebSocket connection alive
+- **Manual reload button** to force refresh without reloading the page
 
 ---
 
 ### 💱 Exchanges
 
-Cards con los exchanges donde $KABRA opera actualmente.
+Cards for the exchanges where $KABRA currently trades.
 
 ![Exchanges](screenshots/03-exchanges.jpg)
 
@@ -62,37 +62,37 @@ Cards con los exchanges donde $KABRA opera actualmente.
 
 ### 🎬 Video Gallery
 
-Galería dinámica cargada desde YouTube Data API v3. Muestra los últimos 6 videos del canal oficial.
+Dynamic gallery loaded from the YouTube Data API v3. Shows the latest 6 videos from the official channel.
 
 ![Video Gallery](screenshots/04-videos.jpg)
 
-- **Carga dinámica:** fetch al canal vía API, sin videos hardcodeados
-- **Video principal:** click en miniatura reemplaza el embed principal sin recargar
-- **Fallback:** si la API falla, carga un set manual de videos conocidos
-- **Timestamps relativos:** "hace 3 días", "hace 2 semanas", etc.
+- **Dynamic loading:** fetches the channel via API, no hardcoded videos
+- **Main video:** clicking a thumbnail replaces the main embed without reloading
+- **Fallback:** if the API fails, loads a manual set of known videos
+- **Relative timestamps:** "3 days ago", "2 weeks ago", etc.
 
 ---
 
 ### 🔢 Tokenomics
 
-Distribución del supply con stats de Streamflow (vesting contract verificable on-chain).
+Supply distribution with Streamflow stats (on-chain verifiable vesting contract).
 
 ![Tokenomics](screenshots/05-tokenomics.jpg)
 
 ---
 
-### 💬 Chat IA (n8n)
+### 💬 AI Chat (n8n)
 
-Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot responde preguntas sobre $KABRA, el proyecto y cómo comprar.
+Floating chat widget connected to an n8n workflow via webhook. The bot answers questions about $KABRA, the project, and how to buy.
 
 ![Chat](screenshots/06-chat.jpg)
 
-- **Backend:** n8n self-hosted en Easypanel
-- **UX:** botón flotante → overlay con iframe → cierre con Escape o botón ✕
+- **Backend:** self-hosted n8n on Easypanel
+- **UX:** floating button opens an overlay with an iframe, closes with Escape or the close button
 
 ---
 
-## Stack
+## Tech Stack
 
 <div align="center">
 
@@ -104,55 +104,55 @@ Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot resp
 
 </div>
 
-- **HTML5 + CSS3 + Vanilla JS (ES6+):** sin framework, sin build step
+- **HTML5 + CSS3 + Vanilla JS (ES6+):** no framework, no build step
 - **APIs:** DexScreener, CoinGecko, YouTube Data API v3
-- **Embeds:** DexScreener trading chart con auto-recovery
-- **Automatización:** n8n self-hosted (Easypanel) para el chat IA
-- **Hosting:** VPS Hostinger con deploy via GitHub
-- **Iconos:** Font Awesome 6.4
+- **Embeds:** DexScreener trading chart with auto-recovery
+- **Automation:** self-hosted n8n (Easypanel) for the AI chat
+- **Hosting:** Hostinger VPS with deploy via GitHub
+- **Icons:** Font Awesome 6.4
 
 ---
 
-## Decisiones de ingeniería
+## Engineering Decisions
 
-### 🎯 Sin framework, a propósito
+### 🎯 No framework, on purpose
 
-Una landing page de memecoin tiene un ciclo de vida corto y alta volatilidad de contenido. No tiene sentido introducir un framework con su ecosistema de dependencias para un sitio que puede reescribirse en días. HTML + CSS + JS nativo despliega con un `git push`, tiene cero dependencias que actualizar, y cualquier dev puede leerlo sin onboarding.
+A memecoin landing page has a short lifecycle and high content volatility. There is no reason to introduce a framework with its dependency ecosystem for a site that might be rewritten in days. Vanilla HTML + CSS + JS deploys with a `git push`, has zero dependencies to update, and any developer can read it without onboarding.
 
-### 📊 DexScreener sobre CoinGecko para $KABRA
+### 📊 DexScreener over CoinGecko for $KABRA
 
-CoinGecko no indexa tokens recientes o de bajo market cap de forma confiable. DexScreener sí rastrea cualquier par activo en Solana desde el primer trade. Para el precio de $KABRA, DexScreener es la fuente correcta. Da precio, volumen 24h y liquidez del par real.
+CoinGecko does not reliably index recent or low market cap tokens. DexScreener tracks any active pair on Solana from the first trade. For $KABRA's price, DexScreener is the right source. It returns price, 24h volume, and real pair liquidity.
 
 ### 🔄 Chart auto-recovery
 
-Los embeds de DexScreener usan WebSocket internamente. Cuando la pestaña queda en segundo plano, el WebSocket se cae y el chart queda en "Loading pair..." sin reconectarse solo. La solución fue usar Page Visibility API para recargar el iframe al volver a la pestaña, más un intervalo de 5 minutos como seguro adicional.
+DexScreener embeds use WebSocket internally. When the tab goes to the background, the WebSocket drops and the chart gets stuck on "Loading pair..." without reconnecting. The fix uses the Page Visibility API to reload the iframe when returning to the tab, plus a 5-minute interval as an additional safety net.
 
-### 🎬 YouTube API dinámica
+### 🎬 Dynamic YouTube API
 
-Si el canal sube un video nuevo, la galería lo muestra automáticamente sin tocar el código. El fallback manual asegura que si la API falla o llega al límite de cuota, el usuario igual ve contenido.
+When the channel publishes a new video, the gallery shows it automatically without touching the code. The manual fallback ensures that if the API fails or hits its quota limit, the user still sees content.
 
-### 🤖 n8n para el chat
+### 🤖 n8n for the chat
 
-El chat necesitaba responder preguntas específicas sobre $KABRA. Una integración directa con un LLM requería un servidor propio para proteger las API keys. n8n self-hosted resuelve eso. El workflow vive en el servidor y el frontend solo hace fetch a un webhook.
-
----
-
-## Acerca del proyecto
-
-Diseñado y desarrollado por [@tokiopy](https://github.com/tokiopy) para el equipo de **Kabra Coin**, la primera memecoin comunitaria de Punta Cana, República Dominicana.
-
-**Estado:** Production · [kabracoin.com](https://kabracoin.com/)
+The chat needed to answer specific questions about $KABRA. A direct LLM integration would have required a server to protect the API keys. Self-hosted n8n solves that. The workflow lives on the server and the frontend only fetches a webhook.
 
 ---
 
-## Otros proyectos
+## About the project
 
-- **[BitcoinLab Bolivia](https://github.com/tokiopy/bitcoinlab-bolivia-showcase):** plataforma de educación Bitcoin con 7 herramientas integradas
-- **[Satoshi's Playroom](https://github.com/tokiopy/satoshis-playroom-showcase):** plataforma de gaming Bitcoin con Dominó, Póker y Ajedrez sobre Lightning Network
+Designed and developed by [@tokiopy](https://github.com/tokiopy) for the **Kabra Coin** team, the first community memecoin from Punta Cana, Dominican Republic.
+
+**Status:** Production · [kabracoin.com](https://kabracoin.com/)
 
 ---
 
-## Contacto
+## Other projects
+
+- **[BitcoinLab Bolivia](https://github.com/tokiopy/bitcoinlab-bolivia-showcase):** Bitcoin education platform with 7 integrated tools
+- **[Satoshi's Playroom](https://github.com/tokiopy/satoshis-playroom-showcase):** Bitcoin gaming platform with Domino, Poker, and Chess on Lightning Network
+
+---
+
+## Connect
 
 - 💬 **GitHub:** [@tokiopy](https://github.com/tokiopy)
 - 📧 **Email:** info@tokiohub.com
