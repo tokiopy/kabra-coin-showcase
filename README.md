@@ -10,6 +10,8 @@ Precio en vivo · Trading Chart · Exchanges · YouTube dinámico · Chat IA · 
 [![Status](https://img.shields.io/badge/Status-Production-22c55e?style=for-the-badge)](https://kabracoin.com/)
 [![Solana](https://img.shields.io/badge/Blockchain-Solana-9945FF?style=for-the-badge&logo=solana&logoColor=white)](https://solana.com/)
 
+![Landing](screenshots/01-landing.jpg)
+
 </div>
 
 ---
@@ -37,52 +39,35 @@ Barra fija en la parte superior con precios en tiempo real de $KABRA, BTC, ETH y
 
 ---
 
-### 🦸 Hero
-
-Video de fondo a pantalla completa con el branding del proyecto. CTA directo a Pump.fun para compra inmediata.
-
----
-
-### 📖 About
-
-Presentación del proyecto: origen en Punta Cana, visión comunitaria, contrato en Solana. Botón de copia del contract address con feedback visual (icono cambia a checkmark al copiar, usando Clipboard API con fallback a `execCommand`).
-
----
-
 ### 📈 Trading Chart
 
-Chart de trading en vivo embebido directamente desde DexScreener. Par $KABRA/SOL en Solana mainnet. El embed incluye theme dark, sin panel de trades ni info lateral para una UX más limpia.
+Chart de trading en vivo embebido directamente desde DexScreener. Par $KABRA/SOL en Solana mainnet.
 
-Links secundarios a DexScreener y Pump.fun para operaciones directas.
+- **Auto-recovery:** se recarga automáticamente al volver a la pestaña (Page Visibility API) y cada 5 minutos para mantener la conexión WebSocket activa
+- **Botón de recarga manual** para forzar refresh sin recargar la página
 
 ---
 
 ### 💱 Exchanges
 
-Cards con los exchanges donde $KABRA opera actualmente:
+Cards con los exchanges donde $KABRA opera actualmente.
 
-- **DexScreener** — análisis y trading
-- **Pump.fun** — plataforma de lanzamiento y trading
-- **Gate.io** — exchange centralizado
-- **OKX Web3** — wallet y DEX agregador
-- **Streamflow** — vesting y contratos de distribución
+![Exchanges](screenshots/03-exchanges.jpg)
+
+- DexScreener, Pump.fun, Gate.io, OKX Web3, Streamflow (vesting)
 
 ---
 
 ### 🎬 Video Gallery
 
-Galería dinámica cargada desde YouTube Data API v3. Muestra los últimos 6 videos del canal oficial, con miniaturas, títulos truncados y timestamps relativos ("hace 3 días").
+Galería dinámica cargada desde YouTube Data API v3. Muestra los últimos 6 videos del canal oficial.
 
-- **Carga dinámica:** fetch al canal vía API, no videos hardcodeados
+![Video Gallery](screenshots/04-videos.jpg)
+
+- **Carga dinámica:** fetch al canal vía API, sin videos hardcodeados
 - **Video principal:** click en miniatura reemplaza el embed principal sin recargar
 - **Fallback:** si la API falla, carga un set manual de videos conocidos
-- **Timestamps relativos:** función custom que convierte fechas ISO a "hace X días/semanas/meses"
-
----
-
-### 👥 Equipo
-
-Presentación del equipo fundador con fotos, roles y redes sociales.
+- **Timestamps relativos:** "hace 3 días", "hace 2 semanas", etc.
 
 ---
 
@@ -90,21 +75,18 @@ Presentación del equipo fundador con fotos, roles y redes sociales.
 
 Distribución del supply con stats de Streamflow (vesting contract verificable on-chain).
 
----
-
-### 🌐 Comunidad
-
-Links a todos los canales de la comunidad: X (Twitter), Instagram, YouTube, Telegram.
+![Tokenomics](screenshots/05-tokenomics.jpg)
 
 ---
 
 ### 💬 Chat IA (n8n)
 
-Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot responde preguntas sobre $KABRA, el proyecto y cómo comprar. Se abre como overlay sin salir de la página.
+Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot responde preguntas sobre $KABRA, el proyecto y cómo comprar.
+
+![Chat](screenshots/06-chat.jpg)
 
 - **Backend:** n8n self-hosted en Easypanel
 - **UX:** botón flotante → overlay con iframe → cierre con Escape o botón ✕
-- **Accesibilidad:** `role="dialog"`, `aria-modal`, `aria-label` correctos
 
 ---
 
@@ -122,9 +104,9 @@ Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot resp
 
 - **HTML5 + CSS3 + Vanilla JS (ES6+):** sin framework, sin build step
 - **APIs:** DexScreener, CoinGecko, YouTube Data API v3
-- **Embeds:** DexScreener trading chart
+- **Embeds:** DexScreener trading chart con auto-recovery
 - **Automatización:** n8n self-hosted (Easypanel) para el chat IA
-- **Hosting:** Hostinger (deploy por FTP)
+- **Hosting:** VPS Hostinger con deploy via GitHub
 - **Iconos:** Font Awesome 6.4
 
 ---
@@ -133,19 +115,23 @@ Widget flotante de chat conectado a un workflow de n8n vía webhook. El bot resp
 
 ### 🎯 Sin framework, a propósito
 
-Una landing page de memecoin tiene un ciclo de vida corto y alta volatilidad de contenido. No tiene sentido introducir un framework con su ecosistema de dependencias para un sitio que en el peor caso se reescribe en semanas. HTML + CSS + JS nativo despliega con un upload, tiene cero dependencias que actualizar, y cualquier dev puede leerlo y modificarlo sin onboarding.
+Una landing page de memecoin tiene un ciclo de vida corto y alta volatilidad de contenido. No tiene sentido introducir un framework con su ecosistema de dependencias para un sitio que puede reescribirse en días. HTML + CSS + JS nativo despliega con un `git push`, tiene cero dependencias que actualizar, y cualquier dev puede leerlo sin onboarding.
 
 ### 📊 DexScreener sobre CoinGecko para $KABRA
 
 CoinGecko no indexa tokens recientes o de bajo market cap de forma confiable. DexScreener sí rastrea cualquier par activo en Solana desde el primer trade. Para el precio de $KABRA, DexScreener es la fuente correcta: da precio, volumen 24h y liquidez del par real.
 
-### 🎬 YouTube API dinámica sobre videos hardcodeados
+### 🔄 Chart auto-recovery
 
-Si el canal sube un video nuevo, la galería lo muestra automáticamente sin tocar el código. El fallback manual asegura que si la API falla o llega al límite de cuota, el usuario igual ve contenido. Es el mismo trade-off que apliqué en otros proyectos: las UIs no deberían depender de que las APIs externas siempre funcionen.
+Los embeds de DexScreener usan WebSocket internamente. Cuando la pestaña queda en segundo plano, el WebSocket se cae y el chart queda en "Loading pair..." sin reconectarse solo. La solución: Page Visibility API recarga el iframe al volver a la pestaña, más un intervalo de 5 minutos como seguro adicional.
+
+### 🎬 YouTube API dinámica
+
+Si el canal sube un video nuevo, la galería lo muestra automáticamente sin tocar el código. El fallback manual asegura que si la API falla o llega al límite de cuota, el usuario igual ve contenido.
 
 ### 🤖 n8n para el chat
 
-El chat necesitaba responder preguntas específicas sobre $KABRA (precio, cómo comprar, tokenomics). Una integración directa con OpenAI/Claude requería un servidor propio para proteger las API keys. n8n self-hosted resuelve eso: el workflow vive en el servidor, el frontend solo hace fetch a un webhook. Cambiar el comportamiento del bot es editar el workflow de n8n, no tocar el código del sitio.
+El chat necesitaba responder preguntas específicas sobre $KABRA. Una integración directa con un LLM requería un servidor propio para proteger las API keys. n8n self-hosted resuelve eso: el workflow vive en el servidor, el frontend solo hace fetch a un webhook.
 
 ---
 
