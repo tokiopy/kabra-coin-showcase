@@ -43,6 +43,8 @@ Barra fija en la parte superior con precios en tiempo real de $KABRA, BTC, ETH y
 
 Chart de trading en vivo embebido directamente desde DexScreener. Par $KABRA/SOL en Solana mainnet.
 
+![Trading Chart](screenshots/02-chart.jpg)
+
 - **Auto-recovery:** se recarga automáticamente al volver a la pestaña (Page Visibility API) y cada 5 minutos para mantener la conexión WebSocket activa
 - **Botón de recarga manual** para forzar refresh sin recargar la página
 
