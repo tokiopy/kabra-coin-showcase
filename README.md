@@ -18,7 +18,7 @@ Precio en vivo · Trading Chart · Exchanges · YouTube dinámico · Chat IA · 
 
 ## What is this?
 
-**Kabra Coin ($KABRA)** es la primera memecoin comunitaria de Punta Cana, República Dominicana, desplegada en la blockchain de Solana. Este repositorio es la landing page oficial del proyecto: una web de una sola página que informa, integra datos en tiempo real y conecta a la comunidad con los exchanges donde opera el token.
+**Kabra Coin ($KABRA)** es la primera memecoin comunitaria de Punta Cana, República Dominicana, desplegada en la blockchain de Solana. Este repositorio es la landing page oficial del proyecto. Una web de una sola página que informa, integra datos en tiempo real y conecta a la comunidad con los exchanges donde opera el token.
 
 El sitio no es una vitrina estática. Tiene precios en vivo, un chart de trading embebido, una galería de videos cargada dinámicamente desde YouTube, y un widget de chat con IA construido sobre n8n.
 
@@ -32,9 +32,9 @@ El sitio no es una vitrina estática. Tiene precios en vivo, un chart de trading
 
 Barra fija en la parte superior con precios en tiempo real de $KABRA, BTC, ETH y SOL. Se actualiza cada 30 segundos sin recargar la página.
 
-- **$KABRA:** precio obtenido de DexScreener API (`/latest/dex/tokens/{contract}`) — la fuente correcta para tokens en DEXs de Solana
+- **$KABRA:** precio obtenido de DexScreener API (`/latest/dex/tokens/{contract}`), la fuente correcta para tokens en DEXs de Solana
 - **BTC / ETH / SOL:** CoinGecko API con variación 24h
-- **Animación:** ticker horizontal con CSS `transform` y `requestAnimationFrame` — sin librerías de animación
+- **Animación:** ticker horizontal con CSS `transform` y `requestAnimationFrame`, sin librerías de animación
 - **Indicadores de color:** verde/rojo automático según variación 24h positiva o negativa
 
 ---
@@ -121,11 +121,11 @@ Una landing page de memecoin tiene un ciclo de vida corto y alta volatilidad de 
 
 ### 📊 DexScreener sobre CoinGecko para $KABRA
 
-CoinGecko no indexa tokens recientes o de bajo market cap de forma confiable. DexScreener sí rastrea cualquier par activo en Solana desde el primer trade. Para el precio de $KABRA, DexScreener es la fuente correcta: da precio, volumen 24h y liquidez del par real.
+CoinGecko no indexa tokens recientes o de bajo market cap de forma confiable. DexScreener sí rastrea cualquier par activo en Solana desde el primer trade. Para el precio de $KABRA, DexScreener es la fuente correcta. Da precio, volumen 24h y liquidez del par real.
 
 ### 🔄 Chart auto-recovery
 
-Los embeds de DexScreener usan WebSocket internamente. Cuando la pestaña queda en segundo plano, el WebSocket se cae y el chart queda en "Loading pair..." sin reconectarse solo. La solución: Page Visibility API recarga el iframe al volver a la pestaña, más un intervalo de 5 minutos como seguro adicional.
+Los embeds de DexScreener usan WebSocket internamente. Cuando la pestaña queda en segundo plano, el WebSocket se cae y el chart queda en "Loading pair..." sin reconectarse solo. La solución fue usar Page Visibility API para recargar el iframe al volver a la pestaña, más un intervalo de 5 minutos como seguro adicional.
 
 ### 🎬 YouTube API dinámica
 
@@ -133,7 +133,7 @@ Si el canal sube un video nuevo, la galería lo muestra automáticamente sin toc
 
 ### 🤖 n8n para el chat
 
-El chat necesitaba responder preguntas específicas sobre $KABRA. Una integración directa con un LLM requería un servidor propio para proteger las API keys. n8n self-hosted resuelve eso: el workflow vive en el servidor, el frontend solo hace fetch a un webhook.
+El chat necesitaba responder preguntas específicas sobre $KABRA. Una integración directa con un LLM requería un servidor propio para proteger las API keys. n8n self-hosted resuelve eso. El workflow vive en el servidor y el frontend solo hace fetch a un webhook.
 
 ---
 
